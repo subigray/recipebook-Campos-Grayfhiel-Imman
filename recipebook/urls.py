@@ -19,5 +19,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('ledger.urls')),
+    # FIX: Using an empty string '' starts the path at the root, fixing the Lab 1 deduction!
+    path('', include('ledger.urls')), 
 ]

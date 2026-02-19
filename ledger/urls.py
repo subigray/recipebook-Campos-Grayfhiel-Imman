@@ -1,13 +1,10 @@
 from django.urls import path
-from . import views  # This imports your views.py file so we can link to it
+from . import views
 
 urlpatterns = [
-    # This is for /recipes/list [cite: 11]
+    # Path 1: The Recipe List
     path('recipes/list', views.recipe_list, name='recipe_list'),
-
-    # This is for /recipe/1 [cite: 12]
-    path('recipe/1', views.recipe_1, name='recipe_1'),
-
-    # This is for /recipe/2 [cite: 13]
-    path('recipe/2', views.recipe_2, name='recipe_2'),
+    
+    # Path 2: The dynamic Recipe Detail using a unique key parameter (pk)
+    path('recipe/<int:pk>', views.recipe_detail, name='recipe_detail'),
 ]

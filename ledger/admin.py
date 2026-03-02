@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Ingredient, Recipe, RecipeIngredient
+from .models import Ingredient, Recipe, RecipeIngredient, Profile
 
 # This handles Bonus Point 2: The Inline Admin 
 class RecipeIngredientInline(admin.TabularInline):
@@ -14,3 +15,5 @@ class RecipeAdmin(admin.ModelAdmin):
 # Registering the models so they appear in the admin site
 admin.site.register(Ingredient)
 admin.site.register(Recipe, RecipeAdmin)
+
+admin.site.register(Profile)

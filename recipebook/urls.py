@@ -19,6 +19,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # FIX: Using an empty string '' starts the path at the root, fixing the Lab 1 deduction!
-    path('', include('ledger.urls')), 
+    path('', include('ledger.urls')),
+    # Add this exact line to turn on the login/logout routes:
+    path('accounts/', include('django.contrib.auth.urls')), 
 ]

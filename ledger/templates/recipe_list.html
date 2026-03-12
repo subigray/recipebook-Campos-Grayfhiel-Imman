@@ -3,6 +3,8 @@
 {% block page_heading %}Recipe List{% endblock %} 
 
 {% block content %}
+    <p><a href="{% url 'recipe_add' %}">+ Create New Recipe</a></p>
+
     <ul>
         {% for recipe in recipes %}
             <li>

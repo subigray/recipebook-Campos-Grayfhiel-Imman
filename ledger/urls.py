@@ -4,9 +4,14 @@ from . import views
 
 
 urlpatterns = [
-    # Path 1: The Recipe List
     path('recipes/list', views.recipe_list, name='recipe_list'),
-
-    # Path 2: The dynamic Recipe Detail using a unique key parameter (pk)
     path('recipe/<int:pk>', views.recipe_detail, name='recipe_detail'),
+    # URL for creating new recipes [cite: 13]
+    path('recipe/add', views.RecipeCreateView.as_view(), name='recipe_add'),
+    # URL for uploading images [cite: 17]
+    path(
+        'recipe/<int:pk>/add_image',
+        views.RecipeImageCreateView.as_view(),
+        name='recipe_image_add'
+    ),
 ]

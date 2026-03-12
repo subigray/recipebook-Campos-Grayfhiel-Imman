@@ -14,4 +14,15 @@
     
     <br>
     <a href="{% url 'recipe_list' %}">Back to Recipe List</a>
+    <h3>Images:</h3>
+{% for img in recipe.images.all %}
+    <div>
+        <img src="{{ img.image.url }}" alt="{{ img.description }}" style="max-width: 300px;">
+        <p>{{ img.description }}</p>
+    </div>
+{% empty %}
+    <p>No images yet.</p>
+{% endfor %}
+
+<p><a href="{% url 'recipe_image_add' recipe.pk %}">Upload new images for this recipe</a></p>
 {% endblock %}

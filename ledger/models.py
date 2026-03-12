@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.core.validators import MinLengthValidator
 from django.db import models
 from django.urls import reverse
 
@@ -6,7 +7,7 @@ from django.urls import reverse
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
-    short_bio = models.TextField()
+    short_bio = models.TextField(validators=[MinLengthValidator(256)])
 
     def __str__(self):
         return self.name
@@ -58,4 +59,21 @@ class RecipeIngredient(models.Model):
             f"{self.quantity} of {self.ingredient.name} "
             f"in {self.recipe.name}"
         )
+
+
+class RecipeImage(models.Model):
+    recipe = models.ForeignKey(
+        Recipe,
+        on_delete=models.CASCADE,
+        related_name="images"
+    )
+    image = models.ImageField(
+        upload_to='recipe_images/',
+        blank=False,
+        null=False
+    )
+    description = models.CharField(max_length=255)
+
+    def __str__(self):
+        return f"Image for {self.recipe.name}"
     

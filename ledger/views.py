@@ -56,4 +56,3 @@ class RecipeImageCreateView(LoginRequiredMixin, CreateView):
         context = super().get_context_data(**kwargs)
         context['recipe_pk'] = self.kwargs['pk']
         return context
-    
